@@ -1,0 +1,699 @@
+/* Enhanced Base Styles */
+html {
+    font-size: 14px;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #4A4A4A;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+}
+
+/* Enhanced Navbar */
+#navbar {
+    background-color: rgba(192, 186, 13, 0.392);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(8px);
+}
+#navbar.scrolled {
+    background-color: rgba(47, 93, 98, 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-logo {
+    height: 3.4rem;
+    width: auto;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 3.5rem;
+    }
+}
+
+.navbar-logo:hover {
+    transform: scale(1.05);
+}
+
+/* Enhanced Mobile Menu */
+#mobile-menu {
+    background-color: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+/* Enhanced Hero Carousel */
+#hero-section .hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.1);
+    opacity: 0;
+    image-rendering: high-quality;
+    transition: all 8s ease-in-out;
+}
+
+#hero-section .hero-bg.active {
+    opacity: 1;
+    transform: scale(1);
+    animation: panImage 16s ease-in-out infinite;
+}
+
+@keyframes panImage {
+    0% {
+        background-position: center;
+        transform: scale(1);
+    }
+    50% {
+        background-position: left center;
+        transform: scale(1.05);
+    }
+    100% {
+        background-position: center;
+        transform: scale(1);
+    }
+}
+
+/* Stories Carousel */
+.stories-carousel {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* Modal Styles */
+#story-modal {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Enhanced Responsive Typography */
+@media (max-width: 768px) {
+    .text-4xl, .text-5xl { 
+        font-size: 1.5rem; 
+        line-height: 2rem; 
+    }
+    .text-3xl { 
+        font-size: 1.375rem; 
+        line-height: 1.875rem; 
+    }
+    .text-2xl { 
+        font-size: 1.25rem; 
+        line-height: 1.75rem; 
+    }
+    .text-xl { 
+        font-size: 1.125rem; 
+        line-height: 1.625rem; 
+    }
+    .text-lg { 
+        font-size: 1rem; 
+        line-height: 1.5rem; 
+    }
+    .text-base { 
+        font-size: 0.875rem; 
+        line-height: 1.4rem; 
+    }
+}
+
+/* Donation Toggle Active States */
+.donation-frequency-btn.active {
+    background-color: #2F5D62 !important;
+    color: white !important;
+}
+
+.donation-frequency-btn:not(.active) {
+    background-color: white !important;
+    color: #2F5D62 !important;
+}
+
+/* Card Hover Effects */
+.bg-white {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-white:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Quality */
+img, [style*="background-image"] {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Button Enhancements */
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(47, 93, 98, 0.4);
+}
+
+/* Scroll Animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.8s ease-out;
+}
+
+.slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.8s ease-out;
+}
+
+.slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.zoom-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.6s ease-out;
+}
+
+.zoom-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Staggered animations */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* Loading Animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Carousel Navigation */
+.carousel-prev, .carousel-next {
+    transition: all 0.3s ease;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: white;
+    transform: scale(1.1);
+}
+
+/* Cookie Consent Banner */
+#cookie-consent {
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out;
+}
+
+#cookie-consent.show {
+    transform: translateY(0);
+}
+
+/* Impact Statistics */
+.counter {
+    font-variant-numeric: tabular-nums;
+}
+
+/* Mobile First Adjustments */
+@media (max-width: 640px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .py-16 {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+    
+    .py-20 {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+}
+
+/* Tablet Optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .text-4xl { font-size: 2rem; }
+    .text-5xl { font-size: 2.25rem; }
+}
+
+/* Persuasive Elements */
+.impact-number {
+    background: linear-gradient(135deg, #2F5D62, #5E8B7E);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.urgency-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Trust Indicators */
+.trust-badge {
+    transition: all 0.3s ease;
+}
+
+.trust-badge:hover {
+    transform: scale(1.05);
+}
+/* Scroll Animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-in-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide-in-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.zoom-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.zoom-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Animation delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* Hero background transitions */
+#hero-background-1,
+#hero-background-2,
+#hero-background-3,
+#hero-background-4,
+#hero-background-5,
+#hero-background-6 {
+    transition: opacity 1.5s ease-in-out;
+}
+
+/* Cookie consent animation */
+#cookie-consent {
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out;
+}
+
+#cookie-consent.show {
+    transform: translateY(0);
+}
+/* Fix for carousel navigation arrows */
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(47, 93, 98, 0.8);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background: #2F5D62;
+    transform: translateY(-50%) scale(1.1);
+    /* This keeps them centered while scaling */
+}
+
+.carousel-prev {
+    left: -25px;
+}
+
+.carousel-next {
+    right: -25px;
+}
+
+/* Ensure the carousel container has proper positioning */
+.stories-carousel-container {
+    position: relative;
+}
+
+/* Hide scrollbar but keep functionality */
+.stories-carousel {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+.stories-carousel::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+/* Enhanced card animations */
+.carousel-item {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.carousel-item:hover {
+    transform: translateY(-5px);
+    border-color: #2F5D62;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Smooth carousel scrolling */
+.stories-carousel {
+    scroll-behavior: smooth;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .carousel-prev, .carousel-next {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .carousel-prev {
+        left: -20px;
+    }
+    
+    .carousel-next {
+        right: -20px;
+    }
+}
+/* Enhanced Carousel Styles */
+.stories-carousel-container {
+    position: relative;
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(47, 93, 98, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.8s ease;
+    z-index: 20;
+    font-size: 1.2rem;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background: #2F5D62;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev {
+    left: -25px;
+}
+
+.carousel-next {
+    right: -25px;
+}
+
+/* Hide scrollbar but keep functionality */
+.stories-carousel {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+}
+
+.stories-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.stories-carousel:active {
+    cursor: grabbing;
+}
+
+/* Testimonial slide transitions */
+.testimonial-slide {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.testimonial-dot {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.testimonial-dot:hover {
+    opacity: 0.7 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .carousel-prev, .carousel-next {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .carousel-prev {
+        left: -15px;
+    }
+    
+    .carousel-next {
+        right: -15px;
+    }
+    
+    .testimonial-slide p {
+        font-size: 1.25rem;
+    }
+}
+/* Enhanced Carousel Styles */
+.stories-carousel-container {
+    position: relative;
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(47, 93, 98, 0.9);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 20;
+    font-size: 1.2rem;
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background: #2F5D62;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev {
+    left: -25px;
+}
+
+.carousel-next {
+    right: -25px;
+}
+
+/* Carousel dots */
+.carousel-dot {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot:hover {
+    opacity: 0.7 !important;
+}
+
+/* Hide scrollbar but keep functionality */
+.stories-carousel {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+}
+
+.stories-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.stories-carousel:active {
+    cursor: grabbing;
+}
+
+/* Card animations */
+.carousel-item {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.carousel-item:hover {
+    transform: translateY(-5px);
+    border-color: #2F5D62;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Testimonial slide transitions */
+.testimonial-slide {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.testimonial-dot {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+.testimonial-dot:hover {
+    opacity: 0.7 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .carousel-prev, .carousel-next {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .carousel-prev {
+        left: -15px;
+    }
+    
+    .carousel-next {
+        right: -15px;
+    }
+    
+    .carousel-item {
+        width: 280px; /* Slightly smaller on mobile */
+    }
+    
+    .testimonial-slide p {
+        font-size: 1.25rem;
+    }
+}
+/* Mobile Carousel Centering */
+@media (max-width: 768px) {
+  .stories-carousel {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    scroll-padding-left: 1rem;
+    scroll-padding-right: 1rem;
+  }
+  
+  .stories-carousel-container {
+    overflow: hidden;
+  }
+  
+  .carousel-item {
+    scroll-snap-align: center;
+    flex: 0 0 calc(100vw - 2rem);
+    margin: 0 0.5rem;
+  }
+  
+  /* Hide navigation arrows on mobile */
+  .carousel-prev,
+  .carousel-next {
+    display: none !important;
+  }
+}
+
+/* Enhanced carousel for all screens */
+.stories-carousel {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-item {
+  scroll-snap-align: start;
+}
+
+/* Smooth scrolling */
+.stories-carousel {
+  scroll-behavior: smooth;
+}

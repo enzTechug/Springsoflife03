@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate | Spring of Life Elderly Care</title>
+    <link rel="icon" type="image/x-icon" href="springs logo.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'primary': '#2E7D32', 'secondary': '#C9A227', 'accent': '#EAF5E1', 'warm-gray': '#333333' },
+                    fontFamily: { 'sans': ['Lato', 'sans-serif'], 'heading': ['Poppins', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans text-warm-gray antialiased">
+
+<header class="fixed top-0 left-0 w-full z-50 bg-white shadow-md transition-all duration-300" id="navbar">
+    <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Logo only on mobile, logo + text on desktop -->
+        <div class="flex items-center">
+            <img src="springs logo.png" alt="Logo" class="navbar-logo h-8 w-auto">
+            <span class="hidden md:inline text-xl font-bold text-primary ml-2 font-heading">Spring of Life Elderly Care</span>
+        </div>
+
+        <!-- Language switcher and mobile menu - always visible on mobile -->
+        <div class="flex items-center space-x-4">
+            <div class="text-sm">
+                <button id="lang-en" class="font-semibold text-warm-gray focus:outline-none text-xs">EN</button>
+                <span class="text-gray-300 mx-1">|</span>
+                <button id="lang-se" class="text-gray-500 hover:text-warm-gray focus:outline-none text-xs">SE</button>
+            </div>
+            
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-primary focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Desktop navigation -->
+        <div class="hidden md:flex space-x-4 items-center">
+            <a href="/" class="text-primary font-semibold border-b-2 border-primary text-sm" data-key="navHome">Home</a>
+            <a href="about.html" class="hover:text-primary text-sm" data-key="navAbout">About</a>
+            <a href="programs.html" class="hover:text-primary text-sm" data-key="navPrograms">Programs</a>
+            <a href="impact.html" class="hover:text-primary text-sm" data-key="navImpact">Impact</a>
+            <a href="stories.html" class="hover:text-primary text-sm" data-key="navStories">Stories</a>
+            <a href="gallery.html" class="hover:text-primary text-sm" data-key="navGallery">Gallery</a>
+            <a href="contact.html" class="hover:text-primary text-sm" data-key="navContact">Contact</a>
+        </div>
+
+        <!-- Desktop donate button -->
+        <div class="hidden md:flex items-center space-x-4">
+            <a href="donate.html" class="bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 text-sm" data-key="navDonateBtn">
+                Donate
+            </a>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+        <div class="flex flex-col space-y-1 p-4">
+            <a href="/" class="block py-2 px-4 text-primary font-semibold bg-accent rounded" data-key="navHome">Home</a>
+            <a href="about.html" class="block py-2 px-4 hover:text-primary hover:bg-accent rounded" data-key="navAbout">About</a>
+            <a href="programs.html" class="block py-2 px-4 hover:text-primary hover:bg-accent rounded" data-key="navPrograms">Programs</a>
+            <a href="impact.html" class="block py-2 px-4 hover:text-primary hover:bg-accent rounded" data-key="navImpact">Impact</a>
+            <a href="stories.html" class="block py-2 px-4 hover:text-primary hover:bg-accent rounded" data-key="navStories">Stories</a>
+            <a href="gallery.html" class="block py-2 px-4 hover:text-primary hover:bg-accent rounded" data-key="navGallery">Gallery</a>
+            <a href="contact.html" class="block py-2 px-4 hover:text-primary hover:bg-accent rounded" data-key="navContact">Contact</a>
+            <a href="donate.html" class="block py-3 px-4 bg-primary text-white font-bold rounded-full text-center mt-2" data-key="navDonateBtn">
+                Donate
+            </a>
+        </div>
+    </div>
+</header>
+
+    <main class="mt-[70px]">
+        <section class="bg-accent py-16">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-primary font-heading" data-key="donateHeroTitle">Give Dignity & Care</h1>
+                <p class="text-lg md:text-xl text-warm-gray mt-4 max-w-2xl mx-auto" data-key="donateHeroSubtitle">Your gift provides food, care visits, shelter support, and companionship for vulnerable elders in Zombo, Uganda.</p>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="lg:col-span-2">
+                        <div class="bg-white p-8 md:p-12 rounded-lg shadow-xl border border-gray-100">
+                            <h2 class="text-3xl font-bold text-primary mb-6 font-heading">Make a Donation</h2>
+                            <form action="#" method="POST">
+                                <div class="mb-6">
+                                    <h3 class="text-xl font-bold text-primary mb-4 font-heading" data-key="donateFreq">1. Select Frequency</h3>
+                                    <div class="flex rounded-lg border border-primary overflow-hidden">
+                                        <button type="button" id="monthly-btn" class="donation-frequency-btn flex-1 py-3 px-4 bg-primary text-white font-bold transition duration-300" data-key="donateFreqMonthly">
+                                            Give Monthly
+                                        </button>
+                                        <button type="button" id="once-btn" class="donation-frequency-btn flex-1 py-3 px-4 bg-white text-primary font-bold transition duration-300" data-key="donateFreqOnce">
+                                            Give Once
+                                        </button>
+                                    </div>
+                                    <input type="hidden" id="donation-frequency" name="frequency" value="monthly">
+                                </div>
+
+                                <div class="mb-6">
+                                    <h3 class="text-2xl font-bold text-primary mb-4 font-heading" data-key="donateAmount">2. Select Amount (USD)</h3>
+                                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                        <button type="button" class="py-4 px-2 border-2 border-primary text-primary font-bold text-lg rounded-lg hover:bg-accent">$25</button>
+                                        <button type="button" class="py-4 px-2 border-2 border-primary text-primary font-bold text-lg rounded-lg bg-accent">$50</button>
+                                        <button type="button" class="py-4 px-2 border-2 border-primary text-primary font-bold text-lg rounded-lg hover:bg-accent">$100</button>
+                                        <button type="button" class="py-4 px-2 border-2 border-primary text-primary font-bold text-lg rounded-lg hover:bg-accent">$250</button>
+                                    </div>
+                                    <input type="number" data-key-placeholder="donateAmountOther" placeholder="Other Amount" class="w-full mt-4 px-4 py-3 border-2 border-gray-300 rounded-lg text-lg text-warm-gray focus:outline-none focus:ring-2 focus:ring-primary">
+                                </div>
+
+                                <div class="mb-6">
+                                    <h3 class="text-2xl font-bold text-primary mb-4 font-heading" data-key="donateInfo">3. Your Information</h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <input type="text" data-key-placeholder="donateInfoFirst" placeholder="First Name" class="w-full px-4 py-3 border rounded-lg text-warm-gray focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                        <input type="text" data-key-placeholder="donateInfoLast" placeholder="Last Name" class="w-full px-4 py-3 border rounded-lg text-warm-gray focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                    </div>
+                                    <input type="email" data-key-placeholder="donateInfoEmail" placeholder="Email Address" class="w-full mt-4 px-4 py-3 border rounded-lg text-warm-gray focus:outline-none focus:ring-2 focus:ring-primary" required>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <h3 class="text-2xl font-bold text-primary mb-4 font-heading" data-key="donatePayment">4. Payment Details</h3>
+                                    <div class="p-4 border rounded-lg bg-gray-100 text-warm-gray" data-key="donatePaymentText">
+                                        This is where your payment processor (like Stripe, PayPal, or Mobile Money) integration would go.
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="w-full bg-primary hover:bg-green-700 text-white font-bold py-4 px-8 rounded-full text-xl transition duration-300" data-key="donateButton">
+                                    Donate Now
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-accent p-8 rounded-lg">
+                        <h3 class="text-2xl font-bold text-primary mb-6 font-heading">Where Your Gift Goes</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="text-secondary text-xl mr-3 mt-1"><i class="fas fa-utensils"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-warm-gray">Food packs & hygiene kits</h4>
+                                    <p class="text-sm text-warm-gray">Weekly nutritious meals and essential hygiene supplies</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-secondary text-xl mr-3 mt-1"><i class="fas fa-clinic-medical"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-warm-gray">Basic clinic support & transport</h4>
+                                    <p class="text-sm text-warm-gray">Medical care and transportation to health facilities</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-secondary text-xl mr-3 mt-1"><i class="fas fa-bed"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-warm-gray">Bedding, clothing & mosquito nets</h4>
+                                    <p class="text-sm text-warm-gray">Essential items for safe and comfortable living</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-secondary text-xl mr-3 mt-1"><i class="fas fa-first-aid"></i></div>
+                                <div>
+                                    <h4 class="font-bold text-warm-gray">Emergency response for high-risk elders</h4>
+                                    <p class="text-sm text-warm-gray">Urgent care for those in critical situations</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 p-4 bg-primary text-white rounded-lg">
+                            <h4 class="font-bold mb-2 font-heading">BE PART OF THE CHANGE</h4>
+                            <p class="text-sm">Every small act of kindness restores dignity to an elderly person. You can help today through prayer, volunteering, or a monthly gift.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-primary text-accent pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4 font-heading">Spring of Life Elderly Care</h4>
+                    <p class="text-accent/80 mb-4">Providing dignity, care, and support for elders in Zombo, Uganda.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-secondary text-2xl" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-secondary text-2xl" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-secondary text-2xl" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold text-white mb-4 font-heading">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                        <li><a href="programs.html" class="hover:text-white">Programs</a></li>
+                        <li><a href="stories.html" class="hover:text-white">Stories</a></li>
+                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold text-white mb-4 font-heading">Get Involved</h5>
+                    <ul class="space-y-2">
+                        <li><a href="donate.html" class="hover:text-white">Donate Now</a></li>
+                        <li><a href="#" class="hover:text-white">Volunteer</a></li>
+                        <li><a href="#" class="hover:text-white">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold text-white mb-4 font-heading">Stay Updated</h5>
+                    <p class="mb-4">Get news and impact stories straight to your inbox.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 rounded text-warm-gray mb-2">
+                        <button type="submit" class="w-full bg-secondary hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <hr class="border-t border-accent/30 my-6">
+            <div class="text-center text-sm text-accent/80">
+                <p>&copy; 2025 Spring of Life Elderly Care. All rights reserved.</p>
+                <p>
+                    <a href="#" class="hover:text-white">Privacy Policy</a> | 
+                    <a href="#" class="hover:text-white">Terms of Use</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>

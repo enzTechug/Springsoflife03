@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Zombo Elder Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/x-icon" href="springs logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'primary': '#2F5D62', 'secondary': '#5E8B7E', 'accent': '#DFEEEA', 'warm-gray': '#4A4A4A' },
+                    fontFamily: { 'sans': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <!-- Add this script at the top of admin.html body -->
+<script>
+    // Simple password protection - in production use server-side auth
+    const adminPassword = "ZomboCare2025"; // Change this
+    const storedAuth = sessionStorage.getItem('adminAuthenticated');
+    
+    if (!storedAuth) {
+        const password = prompt("Please enter admin password:");
+        if (password !== adminPassword) {
+            alert("Invalid password");
+            window.location.href = "/";
+        } else {
+            sessionStorage.setItem('adminAuthenticated', 'true');
+        }
+    }
+</script>
+</head>
+<body class="font-sans bg-gray-100 antialiased">
+
+    <div class="flex h-screen bg-gray-100">
+        <div class="hidden md:flex flex-col w-64 bg-primary">
+            <div class="flex items-center justify-center h-16 bg-primary-dark shadow-md">
+                <span class="text-white text-xl font-bold">ZEC Admin Panel</span>
+            </div>
+            <div class="flex-1 flex-col overflow-y-auto">
+                <nav class="flex-1 px-2 py-4 space-y-1">
+                    <a href="#messages" id="nav-messages" class="flex items-center px-4 py-2 text-white bg-secondary rounded-md">
+                        <i class="fas fa-envelope mr-3"></i>
+                        Messages
+                        <span class="ml-auto inline-block bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full">3</span>
+                    </a>
+                    <a href="#newsletter" id="nav-newsletter" class="flex items-center px-4 py-2 text-accent hover:bg-secondary hover:text-white rounded-md">
+                        <i class="fas fa-users mr-3"></i>
+                        Newsletter Subs
+                    </a>
+                    <a href="/" class="flex items-center px-4 py-2 mt-4 text-accent hover:bg-secondary hover:text-white rounded-md">
+                        <i class="fas fa-sign-out-alt mr-3"></i>
+                        Back to Site
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="flex-1 flex flex-col overflow-hidden">
+            <header class="flex justify-between items-center p-4 bg-white border-b-2 border-gray-200">
+                <h1 id="page-title" class="text-2xl font-bold text-primary">Inbox (3 new)</h1>
+                <div class="flex items-center">
+                    <span class="text-warm-gray mr-2">Admin User</span>
+                    <i class="fas fa-user-circle text-2xl text-primary"></i>
+                </div>
+            </header>
+
+            <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6">
+                
+<!-- Replace the entire messages section in admin.html -->
+<div id="view-messages">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="md:col-span-1 bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 border-b">
+                <h2 class="text-lg font-semibold text-primary">Inbox <span id="unread-count" class="bg-red-500 text-white text-xs font-semibold px-2 py-1 rounded-full">0</span></h2>
+            </div>
+            <div id="messages-list" class="divide-y max-h-96 overflow-y-auto">
+                <!-- Messages will be loaded here dynamically -->
+                <div class="text-center p-4 text-gray-500">Loading messages...</div>
+            </div>
+        </div>
+
+        <div class="md:col-span-2 bg-white rounded-lg shadow-lg">
+            <div id="message-detail" class="hidden">
+                <div class="p-4 border-b">
+                    <h2 id="message-subject" class="text-lg font-semibold text-primary"></h2>
+                    <div class="flex justify-between items-center mt-2">
+                        <span id="message-sender" class="text-sm text-gray-600"></span>
+                        <span id="message-date" class="text-sm text-gray-500"></span>
+                    </div>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <div id="message-content" class="text-gray-700 whitespace-pre-line"></div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-lg font-semibold text-primary mb-2">Reply to Message</h3>
+                        <form id="reply-form" action="admin-reply.php" method="POST">
+                            <input type="hidden" id="reply-email" name="recipient_email">
+                            <input type="hidden" id="reply-subject" name="subject">
+                            
+                            <textarea name="reply_message" class="w-full h-40 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary" placeholder="Type your reply here..." required></textarea>
+                            
+                            <div class="flex justify-end space-x-3 mt-4">
+                                <button type="button" class="bg-gray-300 hover:bg-gray-400 text-warm-gray font-bold py-2 px-6 rounded-full archive-btn">Archive</button>
+                                <button type="submit" class="bg-primary hover:bg-secondary text-white font-bold py-2 px-6 rounded-full">
+                                    <i class="fas fa-paper-plane mr-2"></i>Send Reply
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="no-message-selected" class="p-12 text-center">
+                <i class="fas fa-envelope-open text-4xl text-gray-300 mb-4"></i>
+                <h3 class="text-xl font-semibold text-gray-500">Select a message to view</h3>
+                <p class="text-gray-400 mt-2">Choose a message from the inbox to read and reply</p>
+            </div>
+        </div>
+    </div>
+</div>
+                <div id="view-newsletter" class="hidden">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h2 class="text-xl font-semibold text-primary mb-4">Newsletter Subscribers</h2>
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="p-3 text-left text-sm font-semibold text-gray-600">Email</th>
+                                    <th class="p-3 text-left text-sm font-semibold text-gray-600">Subscribed On</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y">
+                                <tr>
+                                    <td class="p-3 text-warm-gray">example.user@gmail.com</td>
+                                    <td class="p-3 text-gray-500">2025-11-12</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-warm-gray">maria.s@hotmail.com</td>
+                                    <td class="p-3 text-gray-500">2025-11-11</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-warm-gray">john.doe.1980@yahoo.com</td>
+                                    <td class="p-3 text-gray-500">2025-11-11</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 text-warm-gray">test.subscriber@domain.org</td>
+                                    <td class="p-3 text-gray-500">2025-11-10</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+
+
+
+    <script>
+    // Enhanced Admin Message Management
+document.addEventListener('DOMContentLoaded', () => {
+    // Message selection
+    const messageItems = document.querySelectorAll('.message-item');
+    const messageDetails = document.querySelector('.message-details');
+    
+    messageItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Remove active class from all messages
+            messageItems.forEach(msg => msg.classList.remove('bg-accent', 'border-l-4', 'border-primary'));
+            
+            // Add active class to clicked message
+            item.classList.add('bg-accent', 'border-l-4', 'border-primary');
+            
+            // Update message details (in real app, fetch from server)
+            const sender = item.querySelector('span').textContent;
+            const preview = item.querySelector('p').textContent;
+            
+            // Simulate loading different message content
+            messageDetails.querySelector('h2').textContent = `Re: ${preview}`;
+            messageDetails.querySelector('.message-content p').innerHTML = 
+                `This is the full message from ${sender} about "${preview}". In a real application, this would be loaded from your database.`;
+        });
+    });
+
+    // Archive functionality
+    document.querySelectorAll('.archive-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const messageItem = document.querySelector('.message-item.bg-accent');
+            if (messageItem) {
+                messageItem.style.opacity = '0.5';
+                messageItem.style.pointerEvents = 'none';
+                alert('Message archived successfully');
+            }
+        });
+    });
+});
+    </script>
+
+    <script>
+        // Simple JS for tab switching
+        document.addEventListener('DOMContentLoaded', () => {
+            const navMessages = document.getElementById('nav-messages');
+            const navNewsletter = document.getElementById('nav-newsletter');
+            
+            const viewMessages = document.getElementById('view-messages');
+            const viewNewsletter = document.getElementById('view-newsletter');
+            
+            const pageTitle = document.getElementById('page-title');
+
+            navMessages.addEventListener('click', (e) => {
+                e.preventDefault();
+                viewMessages.classList.remove('hidden');
+                viewNewsletter.classList.add('hidden');
+                
+                navMessages.classList.add('bg-secondary', 'text-white');
+                navNewsletter.classList.remove('bg-secondary', 'text-white');
+                
+                pageTitle.innerText = 'Inbox (3 new)';
+            });
+
+            navNewsletter.addEventListener('click', (e) => {
+                e.preventDefault();
+                viewMessages.classList.add('hidden');
+                viewNewsletter.classList.remove('hidden');
+                
+                navNewsletter.classList.add('bg-secondary', 'text-white');
+                navMessages.classList.remove('bg-secondary', 'text-white');
+                
+                pageTitle.innerText = 'Newsletter Subscribers';
+            });
+        });
+    </script>
+    <script>
+        // Add this script to admin.html for message management
+document.addEventListener('DOMContentLoaded', function() {
+    // Load messages
+    loadMessages();
+    
+    // Message management functions
+    async function loadMessages() {
+        try {
+            const response = await fetch('admin-messages.php');
+            const data = await response.json();
+            
+            if (data.success) {
+                displayMessages(data.messages);
+            }
+        } catch (error) {
+            console.error('Error loading messages:', error);
+        }
+    }
+    
+    function displayMessages(messages) {
+        const messagesList = document.getElementById('messages-list');
+        const unreadCount = messages.filter(msg => !msg.read).length;
+        
+        document.getElementById('unread-count').textContent = unreadCount;
+        
+        if (messages.length === 0) {
+            messagesList.innerHTML = '<div class="text-center p-4 text-gray-500">No messages found</div>';
+            return;
+        }
+        
+        messagesList.innerHTML = messages.map(message => `
+            <div class="message-item p-4 hover:bg-accent cursor-pointer ${message.read ? 'bg-white' : 'bg-accent border-l-4 border-primary'}" 
+                 data-id="${message.id}" 
+                 data-sender="${message.name}" 
+                 data-email="${message.email}" 
+                 data-date="${message.date}" 
+                 data-content="${message.message.replace(/"/g, '&quot;')}">
+                <div class="flex justify-between">
+                    <span class="font-bold text-warm-gray">${message.name}</span>
+                    <span class="text-sm text-gray-500">${formatDate(message.date)}</span>
+                </div>
+                <p class="text-sm text-gray-700 truncate">${message.message.substring(0, 50)}...</p>
+                ${!message.read ? '<span class="inline-block w-2 h-2 bg-red-500 rounded-full mt-1"></span>' : ''}
+            </div>
+        `).join('');
+        
+        // Add click event listeners
+        document.querySelectorAll('.message-item').forEach(item => {
+            item.addEventListener('click', function() {
+                showMessageDetail(this);
+                markAsRead(this.dataset.id);
+            });
+        });
+    }
+    
+    function showMessageDetail(element) {
+        document.getElementById('no-message-selected').classList.add('hidden');
+        document.getElementById('message-detail').classList.remove('hidden');
+        
+        document.getElementById('message-subject').textContent = `Message from ${element.dataset.sender}`;
+        document.getElementById('message-sender').textContent = `From: ${element.dataset.sender} (${element.dataset.email})`;
+        document.getElementById('message-date').textContent = `Received: ${formatDate(element.dataset.date)}`;
+        document.getElementById('message-content').textContent = element.dataset.content;
+        
+        // Set reply form data
+        document.getElementById('reply-email').value = element.dataset.email;
+        document.getElementById('reply-subject').value = `Re: Your message to Zombo Elder Care`;
+    }
+    
+    async function markAsRead(messageId) {
+        try {
+            const formData = new FormData();
+            formData.append('action', 'mark_read');
+            formData.append('id', messageId);
+            
+            await fetch('admin-messages.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            // Reload messages to update UI
+            loadMessages();
+        } catch (error) {
+            console.error('Error marking message as read:', error);
+        }
+    }
+    
+    async function archiveMessage(messageId) {
+        try {
+            const formData = new FormData();
+            formData.append('action', 'archive');
+            formData.append('id', messageId);
+            
+            await fetch('admin-messages.php', {
+                method: 'POST',
+                body: formData
+            });
+            
+            // Reload messages
+            loadMessages();
+            document.getElementById('no-message-selected').classList.remove('hidden');
+            document.getElementById('message-detail').classList.add('hidden');
+        } catch (error) {
+            console.error('Error archiving message:', error);
+        }
+    }
+    
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString() + ' ' + date.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+    }
+    
+    // Archive button handler
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('archive-btn')) {
+            const messageItem = document.querySelector('.message-item.bg-accent');
+            if (messageItem) {
+                archiveMessage(messageItem.dataset.id);
+            }
+        }
+    });
+});
+    </script>
+</body>
+</html>

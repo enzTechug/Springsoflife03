@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Spring of Life Elderly Care</title>
+    <link rel="icon" type="image/x-icon" href="springs logo.png">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'primary': '#2E7D32', 'secondary': '#C9A227', 'accent': '#EAF5E1', 'warm-gray': '#333333' },
+                    fontFamily: { 'sans': ['Lato', 'sans-serif'], 'heading': ['Poppins', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-sans text-warm-gray antialiased">
+<header class="fixed top-0 left-0 w-full z-50 bg-white shadow-md transition-all duration-300" id="navbar">
+    <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Logo only on mobile, logo + text on desktop -->
+        <div class="flex items-center">
+            <img src="springs logo.png" alt="Logo" class="navbar-logo h-8 w-auto">
+            <span class="hidden md:inline text-xl font-bold text-primary ml-2 font-heading">Spring of Life Elderly Care</span>
+        </div>
+
+        <!-- Language switcher and mobile menu - always visible on mobile -->
+        <div class="flex items-center space-x-4">
+            <div class="text-sm">
+                <button id="lang-en" class="font-semibold text-warm-gray focus:outline-none text-xs">EN</button>
+                <span class="text-gray-300 mx-1">|</span>
+                <button id="lang-se" class="text-gray-500 hover:text-warm-gray focus:outline-none text-xs">SE</button>
+            </div>
+            
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-primary focus:outline-none">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Desktop navigation -->
+        <div class="hidden md:flex space-x-4 items-center">
+            <a href="/" class="text-primary font-semibold border-b-2 border-primary text-sm" data-key="navHome">Home</a>
+            <a href="about.html" class="hover:text-primary text-sm" data-key="navAbout">About</a>
+            <a href="programs.html" class="hover:text-primary text-sm" data-key="navPrograms">Programs</a>
+            <a href="impact.html" class="hover:text-primary text-sm" data-key="navImpact">Impact</a>
+            <a href="stories.html" class="hover:text-primary text-sm" data-key="navStories">Stories</a>
+            <a href="gallery.html" class="hover:text-primary text-sm" data-key="navGallery">Gallery</a>
+            <a href="contact.html" class="hover:text-primary text-sm" data-key="navContact">Contact</a>
+        </div>
+
+        <!-- Desktop donate button -->
+        <div class="hidden md:flex items-center space-x-4">
+            <a href="donate.html" class="bg-primary hover:bg-green-700 text-white font-bold py-2 px-4 rounded-full transition duration-300 text-sm" data-key="navDonateBtn">
+                Donate
+            </a>
+        </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+        <div class="flex flex-col space-y-1 p-4">
+            <a href="/" class="block py-2 px-4 text-primary font-semibold bg-accent rounded" data-key="navHome">Home</a>
+            <a href="about.html" class="block py-2 px-4 hover:text-primary hover:bg-accent rounded" data-key="navAbout">About</a>
+            <a href="programs.html" class="block py-2 px-4 hover:text-primary hover:bg-accent rounded" data-key="navPrograms">Programs</a>
+            <a href="impact.html" class="block py-2 px-4 hover:text-primary hover:bg-accent rounded" data-key="navImpact">Impact</a>
+            <a href="stories.html" class="block py-2 px-4 hover:text-primary hover:bg-accent rounded" data-key="navStories">Stories</a>
+            <a href="gallery.html" class="block py-2 px-4 hover:text-primary hover:bg-accent rounded" data-key="navGallery">Gallery</a>
+            <a href="contact.html" class="block py-2 px-4 hover:text-primary hover:bg-accent rounded" data-key="navContact">Contact</a>
+            <a href="donate.html" class="block py-3 px-4 bg-primary text-white font-bold rounded-full text-center mt-2" data-key="navDonateBtn">
+                Donate
+            </a>
+        </div>
+    </div>
+</header>
+
+    <main class="mt-20">
+        <section class="bg-accent py-16">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-5xl font-bold text-primary font-heading" data-key="aboutHeroTitle">Our Mission & Story</h1>
+                <p class="text-lg md:text-xl text-warm-gray mt-4 max-w-2xl mx-auto" data-key="aboutHeroSubtitle">We believe in a world where every elder is treated with dignity, respect, and care.</p>
+            </div>
+        </section>
+
+        <section class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-bold text-primary mb-4 font-heading" data-key="aboutStoryTitle">Our Story</h2>
+                        <p class="text-lg text-warm-gray mb-4 leading-relaxed" data-key="aboutStoryText1">
+                            Spring of Life is a Christian-based community initiative dedicated to supporting vulnerable seniors in Zombo District, Uganda. At Spring of Life, we ensure that the elderly are seen, safe, and loved.
+                        </p>
+                        <p class="text-lg text-warm-gray leading-relaxed mb-6" data-key="aboutStoryText2">
+                            Through regular home visits, in-home care, hygiene support, weekly food packages, and monthly gatherings where we share a warm meal, we bring dignity, compassion, and hope to the elderly in our community.
+                        </p>
+                        <p class="text-lg text-warm-gray leading-relaxed italic border-l-4 border-secondary pl-4">
+                            Our work is inspired by the words of Jesus in Matthew 25:40: "Truly I tell you, whatever you did for one of the least of these brothers and sisters of mine, you did for me."
+                        </p>
+                    </div>
+                    <div>
+                        <img src="https://placehold.co/500x500?text=Our+Community" alt="Our community" class="rounded-lg shadow-xl w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <div class="mt-16 md:mt-24">
+                    <h2 class="text-3xl font-bold text-primary mb-8 text-center font-heading" data-key="aboutFounderTitle">About the Founder</h2>
+                    <div class="bg-accent rounded-lg p-8 max-w-3xl mx-auto">
+                        <p class="text-lg text-warm-gray mb-4 leading-relaxed">
+                            Spring of Life Elderly Care was founded by a compassionate individual based in Sweden, whose heart remains deeply connected to the elderly in Zombo District, Uganda.
+                        </p>
+                        <p class="text-lg text-warm-gray mb-4 leading-relaxed">
+                            Guided by faith and love, the founder envisioned a project that would bring care, dignity, and hope to those often forgotten. Though choosing to remain private, the founder continues to support and guide the mission from afar, working closely with local volunteers and partners to ensure the elderly are cared for with compassion and respect.
+                        </p>
+                        <p class="text-lg text-warm-gray leading-relaxed italic">
+                            The founder's belief is simple — that every elderly person deserves to live with dignity, love, and peace, and that through collective care, lives can be restored and hope renewed.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-16 md:mt-24">
+                    <h2 class="text-3xl font-bold text-primary mb-4 text-center font-heading" data-key="aboutValuesTitle">Our Values</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                        <div class="bg-accent p-6 rounded-lg">
+                            <div class="text-4xl text-primary mb-3"><i class="fas fa-heart"></i></div>
+                            <h3 class="text-2xl font-bold text-primary mb-2 font-heading" data-key="aboutValue1Title">Dignity</h3>
+                            <p class="text-warm-gray" data-key="aboutValue1Text">We honor the life and legacy of every elder, treating them with the utmost respect.</p>
+                        </div>
+                        <div class="bg-accent p-6 rounded-lg">
+                            <div class="text-4xl text-primary mb-3"><i class="fas fa-hands-helping"></i></div>
+                            <h3 class="text-2xl font-bold text-primary mb-2 font-heading" data-key="aboutValue2Title">Compassion</h3>
+                            <p class="text-warm-gray" data-key="aboutValue2Text">Our work is driven by empathy and a genuine desire to help.</p>
+                        </div>
+                        <div class="bg-accent p-6 rounded-lg">
+                            <div class="text-4xl text-primary mb-3"><i class="fas fa-church"></i></div>
+                            <h3 class="text-2xl font-bold text-primary mb-2 font-heading" data-key="aboutValue3Title">Faith</h3>
+                            <p class="text-warm-gray" data-key="aboutValue3Text">We are guided by Christian values and the belief in serving others.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-primary text-accent pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-xl font-bold text-white mb-4 font-heading">Spring of Life Elderly Care</h4>
+                    <p class="text-accent/80 mb-4">Providing dignity, care, and support for elders in Zombo, Uganda.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-secondary text-2xl" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-secondary text-2xl" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-secondary text-2xl" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold text-white mb-4 font-heading">Quick Links</h5>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="hover:text-white">About Us</a></li>
+                        <li><a href="programs.html" class="hover:text-white">Programs</a></li>
+                        <li><a href="stories.html" class="hover:text-white">Stories</a></li>
+                        <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold text-white mb-4 font-heading">Get Involved</h5>
+                    <ul class="space-y-2">
+                        <li><a href="donate.html" class="hover:text-white">Donate Now</a></li>
+                        <li><a href="#" class="hover:text-white">Volunteer</a></li>
+                        <li><a href="#" class="hover:text-white">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-lg font-semibold text-white mb-4 font-heading">Stay Updated</h5>
+                    <p class="mb-4">Get news and impact stories straight to your inbox.</p>
+                    <form>
+                        <input type="email" placeholder="Your email address" class="w-full px-4 py-2 rounded text-warm-gray mb-2">
+                        <button type="submit" class="w-full bg-secondary hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <hr class="border-t border-accent/30 my-6">
+            <div class="text-center text-sm text-accent/80">
+                <p>&copy; 2025 Spring of Life Elderly Care. All rights reserved.</p>
+                <p>
+                    <a href="#" class="hover:text-white">Privacy Policy</a> | 
+                    <a href="#" class="hover:text-white">Terms of Use</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
